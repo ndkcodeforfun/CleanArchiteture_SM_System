@@ -1,0 +1,58 @@
+# Build results
+bin/
+obj/
+out/
+
+# User-specific files
+*.user
+*.rsuser
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio files
+.vs/
+
+# Rider
+.idea/
+
+# ASP.NET log & publish files
+*.log
+*.vspscc
+*.vssscc
+*.dbmdl
+*.dbproj.schemaview
+*.publishsettings
+*.pubxml
+*.pubxml.user
+
+# NuGet packages
+*.nupkg
+*.snupkg
+*.nuspec
+packages/
+*.dll
+*.exe
+
+# Node modules (nếu có front-end)
+node_modules/
+
+# Environment & config files
+appsettings.json
+appsettings.Development.json
+appsettings.Production.json
+appsettings.*.json
+
+# Secrets (không bao giờ push)
+*.secret.json
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
