@@ -10,6 +10,9 @@ namespace StudentManagement.Infrastructure.Persistence.Repositories
         private GenericRepository<Student> _studentRepository;
         private GenericRepository<Classes> _classRepository;
         private GenericRepository<SchoolYears> _schoolYearRepository;
+        private GenericRepository<Teacher> _teacherRepository;
+        private GenericRepository<Parent> _parentRepository;
+        private GenericRepository<Student_Parent> _studentParentRepository;
         public UnitOfWork(ApplicationDbContext context)
         {
             this.context = context;
@@ -18,6 +21,9 @@ namespace StudentManagement.Infrastructure.Persistence.Repositories
         public IGenericRepository<Student> StudentRepository => _studentRepository ?? new GenericRepository<Student>(context);
         public IGenericRepository<Classes> ClassRepository => _classRepository ?? new GenericRepository<Classes>(context);
         public IGenericRepository<SchoolYears> SchoolYearRepository => _schoolYearRepository ?? new GenericRepository<SchoolYears>(context);
+        public IGenericRepository<Teacher> TeacherRepository => _teacherRepository ?? new GenericRepository<Teacher>(context);
+        public IGenericRepository<Parent> ParentRepository => _parentRepository ?? new GenericRepository<Parent>(context);
+        public IGenericRepository<Student_Parent> StudentParentRepository => _studentParentRepository ?? new GenericRepository<Student_Parent>(context);
 
         public async Task<IDbContextTransaction> BeginTransactionAsync()
         {

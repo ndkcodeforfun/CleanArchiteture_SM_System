@@ -8,6 +8,9 @@ namespace StudentManagement.Domain.Interfaces
         IGenericRepository<Student> StudentRepository { get; }
         IGenericRepository<Classes> ClassRepository { get; }
         IGenericRepository<SchoolYears> SchoolYearRepository { get; }
+        IGenericRepository<Teacher> TeacherRepository { get; }
+        IGenericRepository<Parent> ParentRepository { get; }
+        IGenericRepository<Student_Parent> StudentParentRepository { get; }
         Task<IDbContextTransaction> BeginTransactionAsync();
         Task SaveAsync();
     }

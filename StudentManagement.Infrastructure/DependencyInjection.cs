@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using StudentManagement.Application.Interfaces;
 using StudentManagement.Domain.Interfaces;
 using StudentManagement.Infrastructure.Persistence;
 using StudentManagement.Infrastructure.Persistence.Repositories;
@@ -19,6 +20,8 @@ namespace StudentManagement.Infrastructure
 
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IAuthenticateUser, AutheticateUserService>();
+
 
             return services;
         }

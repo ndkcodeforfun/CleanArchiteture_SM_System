@@ -26,7 +26,8 @@ namespace StudentManagement.Application.Features.Students.Queries
         {
             // 3. Gọi phương thức GetAllAsync từ repository
             // Lớp GenericRepository của bạn đã có sẵn phương thức này.
-            var students = await _unitOfWork.StudentRepository.GetAsync(s => s.StatusStudent == 1, pageIndex: request.index, pageSize: request.size, cancellationToken: cancellationToken);
+            //Lấy học sinh đang theo học
+            var students = await _unitOfWork.StudentRepository.GetAsync(pageIndex: request.index, pageSize: request.size, cancellationToken: cancellationToken);
 
             // 4. Map danh sách Entity (Student) sang DTO (StudentDto)
             var studentDtos = _mapper.Map<IEnumerable<StudentDto>>(students);

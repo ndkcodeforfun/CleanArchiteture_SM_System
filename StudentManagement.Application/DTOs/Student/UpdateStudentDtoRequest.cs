@@ -1,4 +1,4 @@
-﻿namespace StudentManagement.Api.DTOs
+﻿namespace StudentManagement.Application.DTOs.Student
 {
     public class UpdateStudentDtoRequest
     {

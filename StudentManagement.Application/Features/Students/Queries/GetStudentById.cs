@@ -14,24 +14,24 @@ namespace StudentManagement.Application.Features.Students.Queries
     }
 
     // 1. Định nghĩa Query
-    public class GetStudentByIdQuery : IRequest<StudentDto?>
+    public class GetClassByIdQuery : IRequest<StudentDto?>
     {
         public Guid StudentId { get; set; }
     }
 
     // 2. Định nghĩa Handler
-    public class GetStudentByIdQueryHandler : IRequestHandler<GetStudentByIdQuery, StudentDto?>
+    public class GetClassByIdQueryHandler : IRequestHandler<GetClassByIdQuery, StudentDto?>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper; // Dùng AutoMapper
 
-        public GetStudentByIdQueryHandler(IUnitOfWork unitOfWork, IMapper mapper)
+        public GetClassByIdQueryHandler(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
 
-        public async Task<StudentDto?> Handle(GetStudentByIdQuery request, CancellationToken cancellationToken)
+        public async Task<StudentDto?> Handle(GetClassByIdQuery request, CancellationToken cancellationToken)
         {
             var student = await _unitOfWork.StudentRepository.GetByIDAsync(request.StudentId, cancellationToken);
 

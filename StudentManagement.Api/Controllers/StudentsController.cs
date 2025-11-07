@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using StudentManagement.Api.DTOs;
+using StudentManagement.Application.DTOs.Student;
 using StudentManagement.Application.Features.Students.Commands;
 using StudentManagement.Application.Features.Students.Queries;
 
@@ -21,7 +21,7 @@ namespace StudentManagement.Api.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetStudentById(Guid id)
         {
-            var query = new GetStudentByIdQuery { StudentId = id };
+            var query = new GetClassByIdQuery { StudentId = id };
             var studentDto = await _sender.Send(query);
 
             return studentDto != null ? Ok(studentDto) : NotFound();
@@ -66,10 +66,19 @@ namespace StudentManagement.Api.Controllers
         public async Task<IActionResult> CreateStudent([FromBody] CreateStudentCommand command)
         {
             // 4. Gửi Command đến Application layer
-            var studentId = await _sender.Send(command);
+            var newStudent = await _sender.Send(command);
 
             // Trả về 201 Created với ID của tài nguyên mới
-            return CreatedAtAction(nameof(GetStudentById), new { id = studentId }, command);
+            return Ok(new
+            {
+                studentId = newStudent.studentId,
+                Parents = newStudent.passes.Select(p => new
+                {
+                    PhoneNumber = p.phone,
+                    Pass = p.pass,
+                    Relation = p.relation
+                })
+            });
         }
     }
 }
